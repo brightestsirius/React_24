@@ -1,3 +1,5 @@
+// action = {type, payload}
+
 // action types
 const COUNTER_INC = `COUNTER_INC`;
 const COUNTER_DEC = `COUNTER_DEC`;
@@ -11,9 +13,9 @@ const actionCreator = (type, payload) => {
 }
 
 // actions
-const COUNTER_INC_ACTION = actionCreator(COUNTER_INC);
-const COUNTER_DEC_ACTION = actionCreator(COUNTER_DEC);
-const COUNTER_SET_ACTION = payload => actionCreator(COUNTER_SET, payload);
+const COUNTER_INC_ACTION = actionCreator(COUNTER_INC); // {type: COUNTER_INC}
+const COUNTER_DEC_ACTION = actionCreator(COUNTER_DEC); // {type: COUNTER_DEC}
+const COUNTER_SET_ACTION = (payload) => actionCreator(COUNTER_SET, payload); // {type: COUNTER_SET, payload: 20};
 
 module.exports = {
     COUNTER_INC,

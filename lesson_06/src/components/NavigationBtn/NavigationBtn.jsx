@@ -1,10 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function NavigationBtn({title, path}) {
+export default function NavigationBtn({ title, path }) {
   const navigation = useNavigate();
 
-  const handlerNavigation = () => navigation(path);
+  const handleRedirect = () => navigation(path);
 
-  return <button onClick={handlerNavigation}>{title}</button>;
+  return <button onClick={handleRedirect}>{title}</button>;
 }

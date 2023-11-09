@@ -16,9 +16,7 @@ export default function Posts() {
   return posts.length ? (
     <ul>
       {posts.map((item) => (
-        <li key={item.id}>
-            <Link to={String(item.id)}>{item.title}</Link>
-        </li>
+        <li key={item.id}><Link to={String(item.id)}>{item.title}</Link></li>
       ))}
     </ul>
   ) : null;
