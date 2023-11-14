@@ -1,14 +1,15 @@
-import { ITEM_CHANGE, SET_LIST } from "./actions";
+import { LIST_ITEM_CHANGE, SET_LIST } from "./actions";
 
-const INITIAL_STATE = {
+const initialState = {
   list: [],
+  color: `green`,
 };
 
-const reducer = (state = INITIAL_STATE, { type, payload }) => {
+const reducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case SET_LIST:
       return { ...state, list: payload };
-    case ITEM_CHANGE:
+    case LIST_ITEM_CHANGE:
       return {
         ...state,
         list: state.list.map((item) => {

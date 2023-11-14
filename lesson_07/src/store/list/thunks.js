@@ -1,19 +1,19 @@
-import service from './../../services/jsonplaceholder'
+import service from './../../services/list'
 
-import {setListAction, itemChangeAction} from './actions'
+import {setListAction, listItemChangeAction} from './actions'
 
-const setListThunk = (payload) => {
-    return async (dispatch) => {
-        let list = await service.get(payload);
-        dispatch(setListAction(list.slice(0,10)));
+const getListThunk = (path) => {
+    return async (dispatch, getState) => {
+        let response = await service.get(path);
+        dispatch(setListAction(response.slice(0,10)));
     }
 }
 
-const changeListItemThunk = (payload) => {
+const changeListItemCompletedThunk = (path, item) => {
     return async (dispatch) => {
-        let item = await service.patch(`todos`, payload.id, payload);
-        dispatch(itemChangeAction(item));
+        let response = await service.patch(path, item.id, {completed:! item.completed});
+        dispatch(listItemChangeAction(response));
     }
 }
 
-export {setListThunk, changeListItemThunk};
+export {getListThunk, changeListItemCompletedThunk};
