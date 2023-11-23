@@ -6,8 +6,12 @@ import {
   useChangePostMutation,
 } from "./../../store/posts/posts.endpoints";
 
+const userExist = true;
+
 export default function Posts() {
-  const { data, error, isLoading } = useGetPostsQuery();
+  const { data, error, isLoading } = useGetPostsQuery(undefined, {
+    skip: !userExist
+  });
   const [deletePost] = useDeletePostByIdMutation();
   const [changePost] = useChangePostMutation();
 
