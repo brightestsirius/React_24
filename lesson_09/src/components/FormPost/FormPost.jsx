@@ -1,23 +1,21 @@
 import React, { useState } from "react";
-import { useCreatePostMutation } from "../../store/posts/posts.endpoints";
 
-import {IPostData} from './../../types/post.types';
+import { useCreatePostMutation } from "./../../store/posts/posts.mutation";
 
-export default function Post() {
-  const defaultPost:IPostData = { title: ``, completed: false };
+const defaultPost = {
+  title: ``,
+  completed: false,
+};
 
-  const [post, setPost] = useState({
-    title: ``,
-    completed: false,
-  });
+export default function FormPost() {
+  const [post, setPost] = useState(defaultPost);
 
   const [createPost] = useCreatePostMutation();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    createPost(post).then(() => {
-        setPost(defaultPost);
-    });
+
+    createPost(post).then(() => setPost(defaultPost));
   };
 
   return (
@@ -33,7 +31,7 @@ export default function Post() {
         />
       </label>
       <label>
-        Completed:{" "}
+        Completed{" "}
         <input
           type="checkbox"
           checked={post.completed}

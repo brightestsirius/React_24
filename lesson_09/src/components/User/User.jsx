@@ -1,21 +1,22 @@
 import React, { useState } from "react";
 
-import useUser from "../../hooks/useUser";
+import useUser from "./../../hooks/useUser";
+import useActions from "./../../hooks/useActions";
 
-import useActions from "../../hooks/useActions";
-
-import Skeleton from "../Skeleton/Skeleton";
+import Loading from "./../Loading/Loading";
+import Error from "./../Error/Error";
 
 export default function User() {
-  const [userId, setUserId] = useState();
   const { user, isLoading, error } = useUser();
+  const [userId, setUserId] = useState();
+
   const { fetchUserById } = useActions();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetchUserById(userId).then(() => {
-      e.target.reset();
-    });
+
+    fetchUserById(userId)
+        .then(() => e.target.reset())
   };
 
   return (
@@ -33,10 +34,11 @@ export default function User() {
           <li>Email: {user.email}</li>
         </ul>
       ) : isLoading ? (
-        <Skeleton />
+        <Loading />
       ) : error ? (
-        <p>{error}</p>
+        <Error value={error} />
       ) : null}
     </div>
   );
 }
+ 

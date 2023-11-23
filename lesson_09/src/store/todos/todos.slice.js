@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+
 import { sliceName } from "./todos.constants";
 
 const initialState = {
@@ -28,26 +29,25 @@ const initialState = {
       completed: true,
     },
   ],
-  favourites: [],
+  favourites: []
 };
 
 export const todosSlice = createSlice({
   name: sliceName,
   initialState,
   reducers: {
-    toggleFavourites: (state, { payload }) => {
-      let isFavourite = state.favourites.find((id) => id === payload);
-      if (isFavourite)
-        state.favourites = state.favourites.filter((id) => id !== payload);
+    toggleFavourite: (state, {payload}) => {
+      let isFavourite = state.favourites.find(id => id === payload);
+      if(isFavourite) state.favourites = state.favourites.filter(id => id!==payload);
       else state.favourites.push(payload);
     },
-    deleteItem: (state, { payload }) => {
-      state.todos = state.todos.filter((item) => item.id !== payload);
-      let isFavourite = state.favourites.find((id) => id === payload);
-      if (isFavourite)
-        state.favourites = state.favourites.filter((id) => id !== payload);
-    },
+    deleteItem: (state, {payload}) => {
+      state.todos = state.todos.filter(item => item.id!==payload);
+      
+      let isFavourite = state.favourites.find(id => id === payload);
+      if(isFavourite) state.favourites = state.favourites.filter(id => id!==payload);
+    }
   },
 });
 
-export const { actions, reducer } = todosSlice;
+export const { actions, reducer} = todosSlice;

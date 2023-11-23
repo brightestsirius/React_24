@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { sliceName } from "./user.constants";
+import { sliceName } from "./user.contants";
 import axios from "axios";
 
 const thunks = {

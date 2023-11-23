@@ -1,19 +1,19 @@
 import React from "react";
 
-import Favourites from "./components/Favourites/Favourites";
 import Todos from "./components/Todos/Todos";
+import Favourite from "./components/Favourite/Favourite";
 import User from "./components/User/User";
 import Posts from "./components/Posts/Posts";
-import Post from "./components/Post/Post";
+import FormPost from "./components/FormPost/FormPost";
 
 export default function App() {
   return (
     <>
-      <Favourites />
+      <Favourite />
       <Todos />
       <User />
       <Posts />
-      <Post />
+      <FormPost />
     </>
   );
 }
