@@ -3,7 +3,7 @@ import React from "react";
 import Badge from "@mui/material/Badge";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
-import useFavourite from "./../../hooks/useFavourite";
+import useFavourite from "../../hooks/useFavourite";
 
 export default function Favourites() {
   const favourites = useFavourite();

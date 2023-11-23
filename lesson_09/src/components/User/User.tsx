@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 
-import useUser from "./../../hooks/useUser";
+import useUser from "../../hooks/useUser";
 
-import useActions from "./../../hooks/useActions";
+import useActions from "../../hooks/useActions";
 
-import Skeleton from "./../Skeleton/Skeleton";
+import Skeleton from "../Skeleton/Skeleton";
 
 export default function User() {
   const [userId, setUserId] = useState();

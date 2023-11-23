@@ -1,10 +1,10 @@
 import React from "react";
-import { useGetPostsQuery } from "./../../store/posts/postsApi";
+import { useGetPostsQuery } from "../../store/posts/postsApi";
 import Skeleton from "../Skeleton/Skeleton";
 import {
   useDeletePostByIdMutation,
   useChangePostMutation,
-} from "./../../store/posts/posts.endpoints";
+} from "../../store/posts/posts.endpoints";
 
 const userExist = true;
 

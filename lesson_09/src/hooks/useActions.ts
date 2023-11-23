@@ -2,8 +2,8 @@ import { useMemo } from "react";
 import { useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
 
-import { actions } from "./../store/todos/todos.slice";
-import { thunks as user } from "./../store/user/user.thunks";
+import { actions } from "../store/todos/todos.slice";
+import { thunks as user } from "../store/user/user.thunks";
 
 const rootActions = {
   ...actions,

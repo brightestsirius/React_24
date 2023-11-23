@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import useActions from "./../../hooks/useActions";
+import useActions from "../../hooks/useActions";
 
 export default function Todos() {
   const todos = useSelector((state) => state.todos.todos);

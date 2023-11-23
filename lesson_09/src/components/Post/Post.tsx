@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { useCreatePostMutation } from "./../../store/posts/posts.endpoints";
+import { useCreatePostMutation } from "../../store/posts/posts.endpoints";
+
+import {IPostData} from './../../types/post.types';
 
 export default function Post() {
-  const defaultPost = { title: ``, completed: false };
+  const defaultPost:IPostData = { title: ``, completed: false };
 
   const [post, setPost] = useState({
     title: ``,
