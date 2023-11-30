@@ -1,74 +1,92 @@
-let str: string = `hello`;
-let value: number = 2;
-let isTrue: boolean = true;
-let valueUndefined: undefined = undefined;
-let valueNull: null = null;
+let valueNumber:number = 10;
+let valueString:string = `str`;
+let valueBoolean:boolean = true;
+let valueUndefined:undefined = undefined;
+let valueNull:null = null;
 
-type maybeString = string | undefined | null;
+let arr_1: number[] = [10, 20, 30];
+let arr_2: (string | number)[] = [10, 'str'];
 
-let userName: maybeString = `Bogdan`;
-let userMonth: any = 9;
+type StringOrNumber = string | number;
 
-let animals: string[] = [`cat`, `dog`, `lion`];
-let values: number[] = [10, 20, 30];
-let ids: string[] | number[] | any[] = [`hello`, 10];
+let arr_3: StringOrNumber[] = [10, 'str'];
+let arr_4: Array<StringOrNumber> = [10, 'str'];
 
-type UserType = {
-    firstName: string;
-    age: number;
+interface IUser{
+    name: string;
+    age?: number;
+    animals: Array<string>
 }
 
-enum REST_API_METHODS {
-    GET = `get`,
-    DELETE = `delete`,
-    POST = `post`,
+let user:IUser = {
+    name: `User`,
+    animals: [`cat`, `dog`]
 }
 
-type Child = {
-    firstName: string;
-    age: number;
+type RGBcolor = [number, number, number];
+
+let color: RGBcolor = [255, 255, 255];
+
+class Animal {
+    name: string = `default name`;
+
+    constructor(name: string = `default name`){
+        this.name = name;
+    }
 }
 
-interface User {
-    firstName: string;
-    age: number;
-    isMarried: boolean;
-    children?: Child[],
-    rest: REST_API_METHODS
+class Tiger extends Animal{
+    type: string;
+
+    constructor(){
+        super();
+        this.type = `tiger`;
+    }
 }
 
-let user: User = {
-    firstName: `Taras`,
-    age: 60,
-    isMarried: true,
-    children: [
-        {
-            firstName: `Bogdan`,
-            age: 2,
-        },
-        {
-            firstName: `Andriy`,
-            age: 5,
-        }
-    ],
-    rest: REST_API_METHODS.GET
+let lion = new Animal(`Simba`);
+let tiger = new Tiger();
+
+console.log(lion, tiger);
+
+enum RESPONSE_TYPES {
+    SUCCESS = `success`,
+    ERROR = `error`
 }
 
-const renderData = (str: string): void => {
-    console.log(`Hello, ${str}!`);
+let response = {status: `success`};
+
+if(response.status === RESPONSE_TYPES.SUCCESS) console.log(RESPONSE_TYPES.SUCCESS)
+else console.log(RESPONSE_TYPES.ERROR);
+
+const summ = (a:number, b?:number):number => {
+    if(b) return a+b;
+    else return a;
 }
 
-const sum = (a:number, b: number | undefined): number => {
-    return b ? a+b : a;
+summ(10, 20);
+summ(10);
+
+const print = (value: string): void => console.log(value);
+
+const makeState = <T>(defaultState: T) => {
+    let state:T = defaultState;
+
+    const getState = () => state;
+
+    const setState = (newState:T) => {
+        state = newState;
+    }
+
+    return {getState, setState};
 }
 
-sum(10,20);
-sum(30);
+let myState = makeState(1);
 
-const printValue = <x, y>(value_1:x, value_2:y): void => {
-    console.log(value_1);
-    console.log(value_2);
-}
+myState.setState(1);
+console.log(myState.getState());
 
-printValue(10, 20);
-printValue(`hello`, `world`);
+myState.setState(2);
+console.log(myState.getState());
+
+export {}
