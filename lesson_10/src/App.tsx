@@ -1,7 +1,8 @@
 import React, { FC, useState, useRef, useEffect } from 'react'
 
-import { ITodo } from './types/data'
-import TodoList from './components/Todo/TodoList';
+import {ITodo} from './types/todo'
+
+import TodoList from './components/TodoList'
 
 const App: FC = () => {
   const [value, setValue] = useState<string>(``);
@@ -9,47 +10,48 @@ const App: FC = () => {
 
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleInput: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-    setValue(e.target.value);
-  }
-
-  const handleKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
-    if (e.key === `Enter`) addValue();
-  }
-
-  const addValue = () => {
-    if (value) {
+  const handleAddItem = () => {
+    if(value){
       setTodos([...todos, {
         id: Date.now(),
         title: value,
         completed: false
       }])
-    }
-    setValue(``);
+      setValue(``);
+    } 
   }
 
-  const removeTodo = (id: number): void => {
-    setTodos(prevState => prevState.filter(item => item.id !== id))
+  const handleInput:React.ChangeEventHandler<HTMLInputElement> = e => setValue(e.target.value);
+
+  const handleKeyDown:React.KeyboardEventHandler<HTMLInputElement> = e => {
+    if(e.key === `Enter`) handleAddItem();
   }
 
-  const toggleTodo = (id: number): void => {
-    setTodos(prevState => prevState.map((item => {
-      if (item.id === id) item.completed = !item.completed;
+  const handleItemDelete = (id:number):void => {
+    setTodos(prevState => prevState.filter(item => item.id !== id));
+  }
+
+  const handleItemCompleted = (id:number):void => {
+    setTodos(prevState => prevState.map(item => {
+      if(item.id === id) item.completed = !item.completed;
       return item;
-    })))
+    }))
   }
 
   useEffect(() => {
     inputRef.current && inputRef.current.focus();
-  }, [])
+  }, []);
 
   return (
     <div>
+
       <div>
-        <input type="text" value={value} onChange={handleInput} onKeyDown={handleKeyDown} ref={inputRef} />
-        <button onClick={addValue}>Add todo</button>
+        <input type="text" value={value} onKeyDown={handleKeyDown} onChange={handleInput} ref={inputRef} />
+        <button onClick={handleAddItem}>Add item</button>
       </div>
-      <TodoList items={todos} removeTodo={removeTodo} toggleTodo={toggleTodo} />
+
+      <TodoList items={todos} handleItemDelete={handleItemDelete} handleItemCompleted={handleItemCompleted} />
+
     </div>
   )
 }
