@@ -1,14 +1,13 @@
 import React, { FC, useEffect } from 'react'
-import { useAppDispatch, useAppSelector } from './../../hooks'
-import { getPosts } from './../../store/posts/postsSlice'
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import postsThunks from '../../store/posts/postsThunk';
 
-const PostsList: FC = () => {
+const PostList: FC = () => {
   const dispatch = useAppDispatch();
-
   const posts = useAppSelector(state => state.posts.list);
 
   useEffect(() => {
-    dispatch(getPosts());
+    dispatch(postsThunks.fetchPosts());
   }, [])
 
   return posts.length ? <ul>
@@ -16,4 +15,4 @@ const PostsList: FC = () => {
   </ul> : null;
 }
 
-export default PostsList
+export default PostList;

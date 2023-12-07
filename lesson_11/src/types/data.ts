@@ -5,11 +5,14 @@ interface IPost {
     body: string;
 }
 
-interface IUser{
+interface IUsers {
     id: number;
-    name: string;
+    name: ``
 }
 
-type PartialPost = Partial<IPost>;
+interface ITodos {
+    id: number;
+    title: ``
+}
 
-export type { IPost, PartialPost, IUser }
+export type { IPost, IUsers, ITodos }

@@ -1,13 +1,13 @@
-import React, { FC } from 'react'
+import React, {FC} from 'react'
 
-import PostsList from './components/Posts/PostsList'
-import UsersList from './components/Users/UsersList'
+import PostList from './components/Post/PostList'
+import UserList from './components/User/UserList'
 
-const App: FC = () => {
+const App:FC = () => {
   return (
     <div>
-      <PostsList />
-      <UsersList />
+      <PostList />
+      <UserList />
     </div>
   )
 }
