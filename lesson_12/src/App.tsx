@@ -6,8 +6,8 @@ import Counter from './components/Counter/Counter'
 function App() {
   return (
     <>
-      <Accordion title="Title">
-        <h4>Content</h4>
+      <Accordion title={"Title"}>
+        <h3>Content</h3>
       </Accordion>
       <Counter />
     </>

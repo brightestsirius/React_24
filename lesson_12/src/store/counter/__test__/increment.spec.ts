@@ -1,12 +1,13 @@
-import counterSliceReducer, {initialState, increment} from './../slice';
+import counterSliceReducer, {increment, initialState} from '../slice';
+import {describe} from 'vitest'
 
-describe(`initial state tests`, () => {
-    it(`increment initial state`, () => {
+describe(`increment`, () => {
+    it(`default increment`, () => {
         const incrementState = counterSliceReducer(initialState, increment());
         const incrementNextState = counterSliceReducer(incrementState, increment());
 
-        expect(initialState.value).toBe(0);
-        expect(incrementState.value).toBe(1);
-        expect(incrementNextState.value).toBe(2);
+        expect(initialState.value).toEqual(0);
+        expect(incrementState.value).toEqual(1);
+        expect(incrementNextState.value).toEqual(2);
     })
 })
