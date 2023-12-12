@@ -1,9 +1,8 @@
-import { describe } from 'vitest';
-import counterSliceReducer, {initialState} from '../slice';
+import counterSliceReducer, {initialState} from './../slice';
 
-describe(`initail state`, () => {
-    it(`initial state check`, () => {
+describe(`initial state tests`, () => {
+    it(`initial state`, () => {
         const state = counterSliceReducer(undefined, {type: "unknown"});
-        expect(state).toEqual(initialState)
+        expect(state).toEqual(initialState);
     })
 })
